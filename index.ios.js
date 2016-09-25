@@ -1,3 +1,4 @@
+const MK = require('react-native-material-kit');
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -8,47 +9,53 @@ import {
   TouchableHighlight
 } from 'react-native';
 import Camera from 'react-native-camera';
+import {Takepic} from './ios/components/camera';
+const {
+  MKButton,
+  MKColor,
+} = MK;
+const Fab = MKButton.coloredFab()
+  .withBackgroundColor(MKColor.Yellow)
+  .build();
+
 class SelfSee extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}
-          type={Camera.constants.Type.front}
-          keepAwake={true}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>SelfSee</Text>
-        </Camera>
+      <View>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <View>
+          <Fab onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+            <Text style={styles.Buttontext}>
+                PRESS BUTTON!!
+            </Text>
+          </Fab>
+        </View>   
       </View>
     );
   }
-  takePicture() {
-    this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
-  }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
+  Buttonstyle:{
+     justifyContent: 'center',
+  },
+  Buttontext:{
+    textAlign: 'center',
+    color: '#000000',
+    fontSize: 10,
   }
 });
+
 AppRegistry.registerComponent('SelfSee', () => SelfSee);
