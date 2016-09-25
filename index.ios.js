@@ -5,6 +5,7 @@ import {
   Dimensions,
   StyleSheet,
   Text,
+  Image,
   View,
   TouchableHighlight
 } from 'react-native';
@@ -21,18 +22,50 @@ const Fab = MKButton.coloredFab()
 class SelfSee extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          How are you feeling today?
         </Text>
         <View>
-          <Fab onPress={() => {
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {
                 console.warn('hi, raised button!');
                 }}>
-            <Text style={styles.Buttontext}>
-                PRESS BUTTON!!
-            </Text>
+                <Image pointerEvents="none" source={require('./happy.png')} />
           </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+                <Image pointerEvents="none" source={require('./sad.png')} />
+          </Fab>
+          </View>
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+                <Image pointerEvents="none" source={require('./surprise.png')} />
+          </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+                <Image pointerEvents="none" source={require('./images/angry.png')} />
+          </Fab>
+          </View>
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+                <Image pointerEvents="none" source={require('./disgusting.png')} />
+          </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {
+                console.warn('hi, raised button!');
+                }}>
+                <Image pointerEvents="none" source={require('./images/fear.png')} />
+          </Fab>
+          </View>
+            <Text style={styles.Buttontext}>
+                SURPRISED
+            </Text>
         </View>   
       </View>
     );
@@ -41,12 +74,19 @@ class SelfSee extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   Buttonstyle:{
      justifyContent: 'center',
