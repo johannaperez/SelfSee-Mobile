@@ -31,6 +31,7 @@ export default class SelfSee extends Component {
 
     return (
       <View style={styles.container}>
+        <Takepic />
         <Text style={styles.welcome}>
           How are you feeling today?
         </Text>
@@ -63,7 +64,7 @@ export default class SelfSee extends Component {
                 {this.state.selected}
             </Text>
         </View>
-          
+
       </View>
     );
   }
