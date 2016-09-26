@@ -28,7 +28,7 @@ export default class SelfSee extends Component {
   }
 
   render() {
-    if(this.state.selected !== ''){
+    if(this.state.selected === ''){
       return (
         <View style={styles.container}>
           <Text style={styles.welcome}>
