@@ -20,15 +20,15 @@ const Fab = MKButton.coloredFab()
   .build();
 
 export default class SelfSee extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state= {
+    this.state = {
       selected: ''
     }
   }
 
   render() {
-    if(this.state.selected === ''){
+    if (this.state.selected === ''){
       return (
         <View style={styles.container}>
           <Text style={styles.welcome}>
@@ -36,32 +36,29 @@ export default class SelfSee extends Component {
           </Text>
           <View>
             <View style={styles.row}>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Happy'})}}>
-                  <Image pointerEvents="none" source={require('./happy.png')} />
-            </Fab>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Sad'})}}>
-                  <Image pointerEvents="none" source={require('./sad.png')} />
-            </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'happiness'})}}>
+                    <Image pointerEvents="none" source={require('./happy.png')} />
+              </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'sadness'})}}>
+                    <Image pointerEvents="none" source={require('./sad.png')} />
+              </Fab>
             </View>
             <View style={styles.row}>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Surprised!'})}}>
-                  <Image pointerEvents="none" source={require('./surprise.png')} />
-            </Fab>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Angry'})}}>
-                  <Image pointerEvents="none" source={require('./images/angry.png')} />
-            </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'surprise'})}}>
+                    <Image pointerEvents="none" source={require('./surprise.png')} />
+              </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'anger'})}}>
+                    <Image pointerEvents="none" source={require('./images/angry.png')} />
+              </Fab>
             </View>
             <View style={styles.row}>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Disgusted'})}}>
-                  <Image pointerEvents="none" source={require('./disgusting.png')} />
-            </Fab>
-            <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Scared!'})}}>
-                  <Image pointerEvents="none" source={require('./images/fear.png')} />
-            </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'disgust'})}}>
+                    <Image pointerEvents="none" source={require('./disgusting.png')} />
+              </Fab>
+              <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'fear'})}}>
+                    <Image pointerEvents="none" source={require('./images/fear.png')} />
+              </Fab>
             </View>
-              <Text style={styles.welcome}>
-                  {this.state.selected}
-              </Text>
           </View>
             
         </View>

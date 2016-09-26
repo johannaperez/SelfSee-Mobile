@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   Dimensions,
   StyleSheet,
   Text,
@@ -8,8 +7,15 @@ import {
   TouchableHighlight
 } from 'react-native';
 import Camera from 'react-native-camera';
+import Graph from './emo_graph.js';
 
 export default class Takepic extends Component {
+  constructor() {
+    super();
+    this.state = {
+      graphed: false
+    }
+  }
 
   getEmotions() {
     let apiReqUrl = 'https://api.projectoxford.ai/emotion/v1.0/recognize';
@@ -25,6 +31,7 @@ export default class Takepic extends Component {
     .then((res) => res.json())
     .then((resJson) => {
       console.log('RESPONSE', resJson)
+      this.sestState({ graphed: true });
       return resJson;
     })
     .catch((error) => {
@@ -33,20 +40,30 @@ export default class Takepic extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}
-          type={Camera.constants.Type.front}
-          keepAwake={true}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>SelfSee</Text>
-        </Camera>
+    if (this.state.graphed === false) {
+      return (
+        <View style={styles.container}>
+          <Camera
+            ref={(cam) => {
+              this.camera = cam;
+            }}
+            style={styles.preview}
+            aspect={Camera.constants.Aspect.fill}
+            type={Camera.constants.Type.front}
+            keepAwake={true}>
+            <Text style={styles.capture} onPress={this.takePicture.bind(this)}>SelfSee</Text>
+          </Camera>
+        </View>
+      );
+    }
+    else {
+      return (
+        <View>
+        <Graph />
       </View>
-    );
+      )
+    }
+
   }
 
   takePicture() {
