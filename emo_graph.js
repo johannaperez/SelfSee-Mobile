@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
 	View,
-	Image
+	Image,
+	StyleSheet,
+	Text
 } from 'react-native';
 
 
@@ -9,11 +11,15 @@ export default class Graph extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Image source={require('./demo-graph.png')} />
-				<Text style={styles.welcome}>
-					Being happy never goes out of style.
-				</Text>
-				<Text> - Lily Pulitzer </Text>
+				<View style={styles.container}>
+					<Image source={require('./demo-graph.png')} />
+				</View>
+				<View>
+					<Text style={styles.welcome}>
+						Being happy never goes out of style.
+					</Text>
+					<Text> - Lily Pulitzer</Text>
+				</View>
 			</View>
 		)
 	}
@@ -30,5 +36,9 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		textAlign: 'center',
 		margin: 10
+	},
+	dimensions: {
+		width: 10,
+		height: 8
 	}
 });

@@ -31,7 +31,7 @@ export default class Takepic extends Component {
     .then((res) => res.json())
     .then((resJson) => {
       console.log('RESPONSE', resJson)
-      this.sestState({ graphed: true });
+      this.setState({ graphed: true });
       return resJson;
     })
     .catch((error) => {
