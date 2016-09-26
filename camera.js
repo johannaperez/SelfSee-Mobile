@@ -10,6 +10,28 @@ import {
 import Camera from 'react-native-camera';
 
 export default class Takepic extends Component {
+
+  getEmotions() {
+    let apiReqUrl = 'https://api.projectoxford.ai/emotion/v1.0/recognize';
+    return fetch(apiReqUrl, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': '94d515677e3a410c9ce8792baeb53c6c'
+      },
+      // body: JSON.stringify(data) + add data as parameter to getEmotions
+      body: JSON.stringify({ url: 'http://i.dailymail.co.uk/i/pix/2015/01/05/246F155500000578-2898060-image-a-1_1420501245853.jpg' })
+    })
+    .then((res) => res.json())
+    .then((resJson) => {
+      console.log('RESPONSE', resJson)
+      return resJson;
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -26,12 +48,20 @@ export default class Takepic extends Component {
       </View>
     );
   }
+
   takePicture() {
     this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
+    .then((data) => {
+      // console.log(typeof data)  // object
+      console.log(data)         // data.path gets internal photo path
+      // console.log('OBJ?????', init?(data: data.path, scale: 1));
+      // this.getEmotions(data.path) for binary image (too large!)
+      this.getEmotions()
+    })
+    .catch(err => console.error(err));
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
