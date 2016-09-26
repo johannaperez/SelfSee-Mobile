@@ -9,7 +9,7 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-import { Takepic } from './ios/components/camera';
+import { Takepic } from './camera';
 
 const {
   MKButton,

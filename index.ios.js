@@ -9,16 +9,90 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-import Camera from 'react-native-camera';
-import { Takepic } from './ios/components/camera';
-import { Emotions } from './ios/components/buttons'
+import { Takepic } from './camera';
 
-class SelfSee extends Component {
+const {
+  MKButton,
+  MKColor,
+} = MK;
+const Fab = MKButton.coloredFab()
+  .withBackgroundColor(MKColor.Yellow)
+  .build();
+
+export default class SelfSee extends Component {
+  constructor(){
+    super();
+    this.state= {
+      selected: ''
+    }
+  }
+
   render() {
+
     return (
-      <Emotions />
-      )
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          How are you feeling today?
+        </Text>
+        <View>
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Happy'})}}>
+                <Image pointerEvents="none" source={require('./happy.png')} />
+          </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Sad'})}}>
+                <Image pointerEvents="none" source={require('./sad.png')} />
+          </Fab>
+          </View>
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Surprised!'})}}>
+                <Image pointerEvents="none" source={require('./surprise.png')} />
+          </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Angry'})}}>
+                <Image pointerEvents="none" source={require('./images/angry.png')} />
+          </Fab>
+          </View>
+          <View style={styles.row}>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Disgusted'})}}>
+                <Image pointerEvents="none" source={require('./disgusting.png')} />
+          </Fab>
+          <Fab style={styles.Buttonstyle} onPress={() => {this.setState({selected: 'Scared!'})}}>
+                <Image pointerEvents="none" source={require('./images/fear.png')} />
+          </Fab>
+          </View>
+            <Text style={styles.welcome}>
+                {this.state.selected}
+            </Text>
+        </View>
+          
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  Buttonstyle:{
+     justifyContent: 'space-between',
+  },
+  Buttontext:{
+    textAlign: 'center',
+    color: '#000000',
+    fontSize: 10,
+  }
+});
 
 AppRegistry.registerComponent('SelfSee', () => SelfSee);
