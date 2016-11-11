@@ -11,7 +11,7 @@ export default class Graph extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<View style={styles.container}>
+				<View>
 					<Image source={require('./demo-graph.png')} />
 				</View>
 				<View>
